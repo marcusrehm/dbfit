@@ -142,7 +142,8 @@ public class FitFixtureReportingSystemTest {
         @Override
         public void describeTo(final Description description) {
             description.appendText(String.format(
-                    "should contain %d missing rows' ", expectedMissing));
+                    "should contain %d '%s' rows with description '%s' ",
+                    tagClass, expectedMissing, expectedDescription ));
         }
 
         @Override
