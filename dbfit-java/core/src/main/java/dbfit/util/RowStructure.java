@@ -28,5 +28,14 @@ public class RowStructure {
     public int size() {
         return columnNames.length;
     }
+
+    public String[] getKeyPropertiesNames() {
+        String[] keyPropertiesNames = new String[keyProperties.length];
+        for (int i = 0; i < keyProperties.length; i++) {
+            keyPropertiesNames[i] = getColumnName(i);
+        }
+        
+        return keyPropertiesNames;
+    }
 }
 
