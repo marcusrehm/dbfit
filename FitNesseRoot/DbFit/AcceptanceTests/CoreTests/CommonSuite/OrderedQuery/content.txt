@@ -1,0 +1,33 @@
+!|Execute|create table TESTTBL (N int, TWON int)|
+
+!|Insert|TESTTBL|
+|N      |TWON   |
+|1      |1      |
+|2      |2      |
+|3      |3      |
+|4      |4      |
+
+!|Store Query|select * from TESTTBL|q1|
+
+!|Store Query|select * from TESTTBL where N != 3|q2|
+
+We got 5 wrong rows as result, but should get just 1 wrong missing row.
+
+!|Ordered Query|<<q1 |
+|N      |TWON?  |
+|1      |1      |
+|3      |3      |
+|4      |4      |
+
+
+At this one we should get just a missing row for N = 3, instead we are getting 
+three errors.
+
+!|Ordered Query|<<q2 |
+|N      |TWON?  |
+|1      |1      |
+|2      |2      |
+|3      |3      |
+|4      |4      |
+
+!|Execute|drop table TESTTBL|
